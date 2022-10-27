@@ -1,2 +1,3 @@
 # password_cracker
-it cracks passwords
+i mean, it cracks passwords\
+pretty self-explanatory
