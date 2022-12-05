@@ -7,3 +7,6 @@ edition = "2021"
 
 [dependencies]
 rand = "0.8.4"
+md5 = "0.7.0"
+sha2 = "0.10.6"
+bcrypt = "0.13.0"
