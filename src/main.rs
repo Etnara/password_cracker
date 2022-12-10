@@ -324,8 +324,10 @@ fn brute_force_bcrypt(password: &str) {
 
 fn dictionary_attack_md5(password: &str, dict_arr: Vec<String>) {
     let now = Instant::now();
+    // Loop through the dictionary
     for i in 0..dict_arr.len() {
         let password_attempt = &dict_arr[i];
+        // Check if the password has been found
         if password_attempt.contains(password) {
             let elapsed = now.elapsed().as_secs() as f64 + (now.elapsed().subsec_nanos() as f64 / 1000_000_000.0);
             println!("\nTime Elapsed: {elapsed} seconds");
@@ -334,6 +336,7 @@ fn dictionary_attack_md5(password: &str, dict_arr: Vec<String>) {
             process::exit(0);
         }
     }
+    // If the password was not found
     let elapsed = now.elapsed().as_secs() as f64 + (now.elapsed().subsec_nanos() as f64 / 1000_000_000.0);
     println!("\nTime Elapsed: {elapsed} seconds");
     println!("Hash Rate: {} hash/s", dict_arr.len() as f64 / elapsed);
@@ -343,8 +346,10 @@ fn dictionary_attack_md5(password: &str, dict_arr: Vec<String>) {
 
 fn dictionary_attack_sha256(password: &str, dict_arr: Vec<String>) {
     let now = Instant::now();
+    // Loop through the dictionary
     for i in 0..dict_arr.len() {
         let password_attempt = &dict_arr[i];
+        // Check if the password has been found
         if password_attempt.contains(password) {
             let elapsed = now.elapsed().as_secs() as f64 + (now.elapsed().subsec_nanos() as f64 / 1000_000_000.0);
             println!("\nTime Elapsed: {elapsed} seconds");
@@ -353,6 +358,7 @@ fn dictionary_attack_sha256(password: &str, dict_arr: Vec<String>) {
             process::exit(0);
         }
     }
+    // If the password was not found
     let elapsed = now.elapsed().as_secs() as f64 + (now.elapsed().subsec_nanos() as f64 / 1000_000_000.0);
     println!("\nTime Elapsed: {elapsed} seconds");
     println!("Hash Rate: {} hash/s", dict_arr.len() as f64 / elapsed);
@@ -362,8 +368,10 @@ fn dictionary_attack_sha256(password: &str, dict_arr: Vec<String>) {
 
 fn dictionary_attack_bcrypt(password: &str, dict_arr: Vec<String>) {
     let now = Instant::now();
+    // Loop through the dictionary
     for i in 0..dict_arr.len() {
         let password_attempt = &dict_arr[i];
+        // Check if the password has been found
         if verify(&password_attempt, password).unwrap() {
             let elapsed = now.elapsed().as_secs() as f64 + (now.elapsed().subsec_nanos() as f64 / 1000_000_000.0);
             println!("\nTime Elapsed: {elapsed} seconds");
@@ -372,6 +380,7 @@ fn dictionary_attack_bcrypt(password: &str, dict_arr: Vec<String>) {
             process::exit(0);
         }
     }
+    // If the password was not found
     let elapsed = now.elapsed().as_secs() as f64 + (now.elapsed().subsec_nanos() as f64 / 1000_000_000.0);
     println!("\nTime Elapsed: {elapsed} seconds");
     println!("Hash Rate: {} hash/s", dict_arr.len() as f64 / elapsed);
